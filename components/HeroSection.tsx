@@ -116,11 +116,15 @@ export function HeroSection() {
               playsInline
               preload="auto"
               onLoadedData={handleVideoLoaded}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full"
               style={{
                 borderRadius: 'inherit',
-                // Mobile: đảm bảo video fill đầy màn hình portrait
-                objectPosition: isMobile ? 'center center' : 'center center',
+                // Mobile portrait: contain để hiển thị đầy đủ nội dung video
+                // Desktop: cover để fill màn hình
+                objectFit: isMobile ? 'contain' : 'cover',
+                objectPosition: 'center center',
+                // Mobile: background đen cho phần padding
+                backgroundColor: isMobile ? '#1a1a1a' : 'transparent',
               }}
             >
               <source src="/videos/hero-intro.mp4" type="video/mp4" />
