@@ -91,8 +91,8 @@ export function HeroSection() {
 
   return (
     <section ref={sectionRef} className="relative">
-      {/* Hero container - chứa video, overlay và content, full screen */}
-      <div className="relative h-screen overflow-hidden">
+      {/* Hero container - mobile: 70vh để video landscape hiển thị tốt hơn */}
+      <div className="relative h-[70vh] md:h-screen overflow-hidden">
         {/* Static gradient background - hiển thị khi video fade out */}
         <div className="absolute inset-0 z-0 bg-gradient-to-b from-incanto-dark via-incanto-primary/80 to-incanto-secondary" />
 
@@ -116,16 +116,8 @@ export function HeroSection() {
               playsInline
               preload="auto"
               onLoadedData={handleVideoLoaded}
-              className="absolute inset-0 w-full h-full"
-              style={{
-                borderRadius: 'inherit',
-                // Mobile portrait: contain để hiển thị đầy đủ nội dung video
-                // Desktop: cover để fill màn hình
-                objectFit: isMobile ? 'contain' : 'cover',
-                objectPosition: 'center center',
-                // Mobile: background đen cho phần padding
-                backgroundColor: isMobile ? '#1a1a1a' : 'transparent',
-              }}
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              style={{ borderRadius: 'inherit' }}
             >
               <source src="/videos/hero-intro.mp4" type="video/mp4" />
             </video>
