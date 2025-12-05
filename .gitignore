@@ -16,6 +16,8 @@
 # next.js
 /.next/
 /out/
+dist/
+bin/
 
 # production
 /build
@@ -30,8 +32,17 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# package manager
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# semantic-release
+.nyc_output
+
+# env files - CRITICAL: Never commit API keys
 .env*
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +50,51 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# flutter
+.dart_tool
+build
+GoogleService-Info.plist
+
+repomix-output.xml
+.serena/cache
+plans/**/*
+!plans/templates/*
+screenshots/*
+docs/screenshots/*
+docs/journals/*
+docs/research/*
+logs.txt
+test-ck
+__pycache__
+prompt.md
+
+# Gemini CLI settings
+.gemini/settings.json
+
+# AI Tools & Rules (Private - không public)
+.claude/
+.opencode/
+.augment/
+.mcp.json
+RULE MOI/
+claudekit/
+CLAUDE.md
+GEMINI.md
+
+# Temporary & Build artifacts
+deploy-bundle/
+deploy-bundle.tar.gz
+*.tar.gz
+
+# Screenshots & Videos (large files)
+*.png
+*.mp4
+!public/**/*.png
+!public/**/*.jpg
+!public/**/*.jpeg
+!public/**/*.webp
+
+# Test files
+test-*.js
+tests/
