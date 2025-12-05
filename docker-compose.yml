@@ -9,7 +9,7 @@ services:
     container_name: incanto-tea-store
     ports:
       # Map container port 3000 to host port 8180
-      - "8180:3000"
+      - "8190:3000"
     environment:
       - NODE_ENV=production
       - NEXT_TELEMETRY_DISABLED=1
