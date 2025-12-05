@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { Button } from '@/components/ui'
@@ -55,14 +54,8 @@ export function BrandStorySection() {
   return (
     <section className="py-16 sm:py-20 lg:py-24 bg-incanto-cloud-dancer">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-12 sm:mb-16"
-        >
+        {/* Header - không animation */}
+        <div className="text-center mb-12 sm:mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-incanto-dark mb-4">
             Câu Chuyện{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-incanto-primary to-incanto-accent">
@@ -73,19 +66,14 @@ export function BrandStorySection() {
             Ra đời từ niềm đam mê với văn hóa trà đạo Việt Nam, INCANTO là hành trình khôi phục
             và tôn vinh những giá trị truyền thống ngàn năm.
           </p>
-        </motion.div>
+        </div>
 
         {/* Bento Grid - 3 columns on desktop, 1 on mobile */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 mb-12">
-          {features.map((feature, index) => (
-            <motion.div
+          {features.map((feature) => (
+            <div
               key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ y: -4, transition: { duration: 0.2 } }}
-              className="group relative bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 border border-incanto-dark/5"
+              className="group relative bg-white rounded-2xl p-6 sm:p-8 shadow-sm hover:shadow-lg transition-all duration-300 border border-incanto-dark/5 hover:-translate-y-1"
             >
               {/* Gradient accent background */}
               <div className={`absolute inset-0 bg-gradient-to-br ${feature.accent} rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
@@ -107,18 +95,12 @@ export function BrandStorySection() {
                   {feature.description}
                 </p>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 
         {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center"
-        >
+        <div className="text-center">
           <Link href="/about">
             <Button
               variant="primary"
@@ -129,7 +111,7 @@ export function BrandStorySection() {
               Tìm hiểu thêm
             </Button>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   )

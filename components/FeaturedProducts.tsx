@@ -72,20 +72,19 @@ const featuredProducts: Product[] = [
   }
 ]
 
+// Đơn giản hóa animation - tránh giật lag
 const containerVariants = {
-  hidden: { opacity: 1 },
+  hidden: {},
   visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 }
+    transition: { staggerChildren: 0.05 }
   }
 }
 
 const itemVariants = {
-  hidden: { opacity: 1, y: 0 },
+  hidden: { opacity: 0.8 },
   visible: {
     opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] }
+    transition: { duration: 0.3 }
   }
 }
 
@@ -120,20 +119,14 @@ export function FeaturedProducts() {
   return (
     <section className="py-16 sm:py-20 lg:py-24 bg-incanto-cloud-dancer">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={false}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-10 sm:mb-14 lg:mb-16"
-        >
+        <div className="text-center mb-10 sm:mb-14 lg:mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-incanto-dark mb-3 sm:mb-4">
             Sản Phẩm Nổi Bật
           </h2>
           <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-xl lg:max-w-2xl mx-auto">
             Tuyển tập những sản phẩm được yêu thích nhất
           </p>
-        </motion.div>
+        </div>
 
         <motion.div
           variants={containerVariants}
@@ -151,9 +144,7 @@ export function FeaturedProducts() {
                 <motion.div
                   key={product.id}
                   variants={itemVariants}
-                  whileHover={{ y: -8 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="flex-shrink-0 w-[70vw] sm:w-auto bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-sm hover:shadow-xl transition-shadow duration-300 cursor-pointer group relative"
+                  className="flex-shrink-0 w-[70vw] sm:w-auto bg-white rounded-2xl sm:rounded-3xl p-3 sm:p-4 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer group relative hover:-translate-y-2"
                   onMouseEnter={() => setHoveredProduct(product.id)}
                   onMouseLeave={() => setHoveredProduct(null)}
                 >
@@ -261,24 +252,14 @@ export function FeaturedProducts() {
           </div>
         </motion.div>
 
-        <motion.div
-          initial={false}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-          className="text-center mt-10 sm:mt-12 lg:mt-16"
-        >
+        <div className="text-center mt-10 sm:mt-12 lg:mt-16">
           <Link href="/products">
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 bg-incanto-dark hover:bg-incanto-secondary text-white text-sm sm:text-base font-medium px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-colors min-h-[48px]"
-            >
+            <button className="inline-flex items-center gap-2 bg-incanto-dark hover:bg-incanto-secondary text-white text-sm sm:text-base font-medium px-6 sm:px-8 py-3 sm:py-4 rounded-full transition-all duration-200 min-h-[48px] hover:scale-[1.02] active:scale-[0.98]">
               <span>Xem tất cả sản phẩm</span>
               <ArrowRight className="w-4 h-4" />
-            </motion.button>
+            </button>
           </Link>
-        </motion.div>
+        </div>
       </div>
     </section>
   )
